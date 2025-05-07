@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
         Gravity();
+        Move();
     }
 
     void Move()
@@ -43,9 +43,9 @@ public class PlayerController : MonoBehaviour
 
     private void Gravity()
     {
-        vel_act.y += Physics2D.gravity.y * Time.deltaTime;
+        vel_act.y = Physics2D.gravity.y * Time.deltaTime * 3;
 
-        RaycastHit2D col = Physics2D.Raycast(new Vector2(pies.transform.position.x, pies.transform.position.y), new Vector2(0,-1), 0.025f);
+        RaycastHit2D col = Physics2D.Raycast(new Vector2(pies.transform.position.x, pies.transform.position.y), new Vector2(0,-1), 0.05f);
         if(col != null && col.collider != null)
         {
             if (col.transform.CompareTag("Suelo"))
